@@ -11,48 +11,31 @@ import java.util.stream.Collectors;
 public class articleService {
 
 
-
-    private List<Article> articles;
-
-    public articleService() {
-        this.articles = new ArrayList<>();
-        articles.add(new Article(1L,"10 reasons to learn Spring", "this is the body", "Jane"));
-
-    }
-
-
-
-    public Article getById(Long id) {
-        for(Article a : articles) {
-            if( a.getId().equals(id)) {
-                return a;
-            }
-        }
-        return null;
-    }
-
-
-
-
+    @Autowired
+    private ArticleRepository repository;
 
     public List<Article> getAll() {
-        return this.articles;
+        return repository.findAll();
     }
 
+
+    public Optional<Article> getById(Long id) {
+        return repository.findById(id);
+
+    }
 
     public Article create(Article article) {
-
-         this.articles.add(article);
-         return article;
+         return repository.save(article);
 
     }
+
     public void delete(Long id) {
+        repository.deleteById(id);
 
-       //articles.remove(id);
-        articles = articles.stream()
-                .filter(a ->!a.getId().equals(id))
-                .collect(Collectors.toList());
+    }
 
+    public Article update(Article updatedarticle) {
+        return repository.save(updatedarticle);
 
     }
 

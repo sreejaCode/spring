@@ -5,19 +5,22 @@ package se.sda.web.springproject.article;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
 
-
+@Entity
+@Table(name = "articles")
 public class Article {
 
-
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name ="id")
     private Long id;
 
+    @Column(name ="title")
     private String title;
 
-
+    @Column(name ="body")
     private String body;
 
-
+    @Column(name ="author")
     private String author;
 
 
