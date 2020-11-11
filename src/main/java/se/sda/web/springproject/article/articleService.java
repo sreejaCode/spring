@@ -48,7 +48,10 @@ public class articleService {
     }
     public void delete(Long id) {
 
-       articles.remove(id);
+       //articles.remove(id);
+        articles = articles.stream()
+                .filter(a ->!a.getId().equals(id))
+                .collect(Collectors.toList());
 
 
     }
