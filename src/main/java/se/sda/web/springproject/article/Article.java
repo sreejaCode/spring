@@ -2,6 +2,8 @@ package se.sda.web.springproject.article;
 
 
 
+import se.sda.web.springproject.categories.Category;
+
 import javax.persistence.GenerationType;
 import javax.persistence.*;
 
@@ -24,7 +26,8 @@ public class Article {
     private String author;
 
 
-
+    @ManyToOne
+    private Category category;
 
 
 
@@ -74,7 +77,11 @@ public class Article {
         this.author = author;
     }
 
+    public Category getCategory() {
+        return category;
+    }
 
-
-
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
