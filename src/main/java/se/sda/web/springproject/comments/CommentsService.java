@@ -37,6 +37,9 @@ public class CommentsService {
 
     }
 
+    public List<Comments> getAllByArticleId(Long articleId) {
+        return repository.findAllByArticleId(articleId);
+    }
 
 
 

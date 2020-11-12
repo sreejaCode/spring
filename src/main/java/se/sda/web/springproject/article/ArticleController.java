@@ -23,9 +23,10 @@ public class ArticleController {
 
     @GetMapping("/articles")
     public List<Article> getAll() {
-        return artService.getAll();
-    }
 
+            return artService.getAll();
+
+    }
 
 
     @RequestMapping("/articles/{id}")

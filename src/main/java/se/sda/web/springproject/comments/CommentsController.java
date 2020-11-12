@@ -20,11 +20,16 @@ public class CommentsController {
     }
 
 
-    @GetMapping("/comments")
-    public List<Comments> getAll() {
-        return commentsService.getAll();
-    }
 
+
+    @GetMapping("/comments")
+    public List<Comments> getAll(@RequestParam(required = false) Long articleId) {
+        if (articleId == null) {
+            return commentsService.getAll();
+        } else {
+            return commentsService.getAllByArticleId(articleId);
+        }
+    }
 
 
     @RequestMapping("/comments/{id}")
