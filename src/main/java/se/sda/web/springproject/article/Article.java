@@ -1,11 +1,9 @@
 package se.sda.web.springproject.article;
 
-
-
-import se.sda.web.springproject.categories.Category;
-
+import se.sda.web.springproject.comments.Comments;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "articles")
@@ -13,7 +11,6 @@ public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name ="id")
     private Long id;
 
     @Column(name ="title")
@@ -26,8 +23,10 @@ public class Article {
     private String author;
 
 
-    @ManyToOne
-    private Category category;
+
+
+    @OneToMany
+    private List<Comments> comment;
 
 
 
@@ -66,6 +65,8 @@ public class Article {
         this.body = body;
     }
 
+
+
     public String getAuthor() {
         return author;
     }
@@ -77,11 +78,11 @@ public class Article {
         this.author = author;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Comments> getComment() {
+        return comment;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setComment(List<Comments> comment) {
+        this.comment = comment;
     }
 }
