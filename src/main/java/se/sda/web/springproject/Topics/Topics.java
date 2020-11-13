@@ -3,6 +3,7 @@ package se.sda.web.springproject.Topics;
 import se.sda.web.springproject.article.Article;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -14,8 +15,8 @@ public class Topics {
     private String name;
 
 
-    @ManyToMany
-    private Article article;
+    @ManyToMany(mappedBy = "topic")
+    private List <Article> article;
 
 
 
@@ -24,10 +25,10 @@ public class Topics {
     public Topics() {
     }
 
-    public Topics(Long id, String name, Article article) {
+    public Topics(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.article = article;
+
     }
 
 
@@ -48,11 +49,6 @@ public class Topics {
     }
 
 
-    public Article getArticle() {
-        return article;
-    }
 
-    public void setArticle(Article article) {
-        this.article = article;
-    }
+
 }

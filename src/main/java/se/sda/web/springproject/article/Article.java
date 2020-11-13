@@ -1,5 +1,6 @@
 package se.sda.web.springproject.article;
 
+import se.sda.web.springproject.Topics.Topics;
 import se.sda.web.springproject.comments.Comments;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
@@ -27,6 +28,10 @@ public class Article {
 
     @OneToMany
     private List<Comments> comment;
+
+
+    @ManyToMany
+    private List<Topics> topic;
 
 
 
@@ -84,5 +89,12 @@ public class Article {
 
     public void setComment(List<Comments> comment) {
         this.comment = comment;
+    }
+    public List<Topics> getTopic() {
+        return topic;
+    }
+
+    public void setTopic(List<Topics> topic) {
+        this.topic = topic;
     }
 }
