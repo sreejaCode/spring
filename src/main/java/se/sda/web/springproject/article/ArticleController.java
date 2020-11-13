@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import se.sda.web.springproject.Topics.Topics;
 
 
 import java.util.List;
@@ -21,12 +22,12 @@ public class ArticleController {
     }
 
 
-    @GetMapping("/articles")
+   /* @GetMapping("/articles")
     public List<Article> getAll() {
 
             return artService.getAll();
 
-    }
+    }*/
 
 
     @RequestMapping("/articles/{id}")
@@ -57,6 +58,15 @@ public class ArticleController {
         artService.delete(id);
     }
 
+    @GetMapping("/articles")
+    public List<Article> getAll(@RequestParam(required = false) Long topicId) {
 
+        if (topicId == null) {
+            return artService.getAll();
+        }
+        else {
+            return artService.getAllByTopicId(topicId);
+        }
+    }
 
 }

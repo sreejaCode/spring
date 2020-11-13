@@ -21,13 +21,15 @@ public class TopicsController {
 
 
     @GetMapping("/topics")
-    public List<Topics> getAll(@RequestParam(required = false) Long articleId) {
-        if (articleId == null) {
-            return topicsService.getAll();
-        } else {
-            return topicsService.getAllByArticleId(articleId);
-        }
+   public List<Topics> getAll(@RequestParam(required = false) Long articleId) {
+
+
+     if (articleId == null) {
+        return topicsService.getAll();
+    } else {
+        return topicsService.getAllByArticleId(articleId);
     }
+}
 
 
 
@@ -40,15 +42,15 @@ public class TopicsController {
     }
 
     @PostMapping("/topics")
-    public Topics create(@RequestBody Topics article) {
+    public Topics create(@RequestBody Topics topic) {
 
-        return topicsService.create(article);
+        return topicsService.create(topic);
 
     }
     @PutMapping("/topics")
-    public Topics update(@RequestBody Topics article) {
+    public Topics update(@RequestBody Topics topic) {
 
-        return topicsService.update(article);
+        return topicsService.update(topic);
 
     }
 

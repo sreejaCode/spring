@@ -13,6 +13,9 @@ public class articleService {
     @Autowired
     private ArticleRepository repository;
 
+
+
+
     public List<Article> getAll() {
         return repository.findAll();
     }
@@ -39,7 +42,9 @@ public class articleService {
     }
 
 
-
+    public List<Article> getAllByTopicId(Long topicId) {
+        return repository.findAllByTopic_Id(topicId);
+    }
 }
 
 
