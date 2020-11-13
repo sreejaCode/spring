@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import se.sda.web.springproject.comments.Comments;
-import se.sda.web.springproject.comments.CommentsService;
+
 
 import java.util.List;
 
@@ -21,9 +20,13 @@ public class TopicsController {
     }
 
 
-    @GetMapping("/comments")
-    public List<Topics> getAll() {
-        return topicsService.getAll();
+    @GetMapping("/topics")
+    public List<Topics> getAll(@RequestParam(required = false) Long articleId) {
+        if (articleId == null) {
+            return topicsService.getAll();
+        } else {
+            return topicsService.getAllByArticleId(articleId);
+        }
     }
 
 
@@ -36,13 +39,13 @@ public class TopicsController {
 
     }
 
-    @PostMapping("/comments")
+    @PostMapping("/topics")
     public Topics create(@RequestBody Topics article) {
 
         return topicsService.create(article);
 
     }
-    @PutMapping("/comments")
+    @PutMapping("/topics")
     public Topics update(@RequestBody Topics article) {
 
         return topicsService.update(article);
@@ -51,7 +54,7 @@ public class TopicsController {
 
 
 
-    @DeleteMapping("/comments/{id}")
+    @DeleteMapping("/topics/{id}")
     public void delete(@PathVariable Long id) {
         topicsService.delete(id);
     }
