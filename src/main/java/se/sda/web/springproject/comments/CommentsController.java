@@ -41,15 +41,15 @@ public class CommentsController {
     }
 
     @PostMapping("/comments")
-    public Comments create(@RequestBody Comments article) {
+    public Comments create(@RequestBody Comments comment) {
 
-        return commentsService.create(article);
+        return commentsService.create(comment);
 
     }
     @PutMapping("/comments")
-    public Comments update(@RequestBody Comments article) {
+    public Comments update(@RequestBody Comments comment) {
 
-        return commentsService.update(article);
+        return commentsService.update(comment);
 
     }
 

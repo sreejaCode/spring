@@ -2,7 +2,7 @@ package se.sda.web.springproject.Topics;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import se.sda.web.springproject.article.Article;
 
 
 import java.util.List;
@@ -42,7 +42,6 @@ public class TopicsService {
     public List<Topics> getAllByArticleId(Long articleId) {
         return repository.findAllByArticleId(articleId);
     }
-
 
 
 }
